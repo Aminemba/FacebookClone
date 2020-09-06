@@ -6,19 +6,24 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+  </head>
   <body>
   <%= render 'layouts/header' %>
-
   <div>
-
   <% flash.each do |message_type, message| %>
     <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
   <% end %>
-    <%= yield %>
 
+    <%= yield %>
   </div>
 
   </body>
+<footer class="footer">
+    <p>
+      <strong> Facebook Clone </strong> by <a href="https://github.com/Aminemba/FacebookClone.git">Amine Lh</a>. One Step at a Time ...
+       <a href="https://diver.diveintocode.jp">Join us on Diver </a>.
+    </p>
+    
+</footer>
 </html>

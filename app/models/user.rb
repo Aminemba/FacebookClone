@@ -28,9 +28,6 @@ class User < ApplicationRecord
         user.name = auth.info.name.split(' ')[0]
         user.lastname = auth.info.name.split(' ')[1] # assuming the user model has a name
         user.image_link = auth.info.image # assuming the user model has an image
-        # If you are using confirmable and the provider(s) you use validate emails,
-        # uncomment the line below to skip the confirmation emails.
-        # user.skip_confirmation!
       end
     end
 
