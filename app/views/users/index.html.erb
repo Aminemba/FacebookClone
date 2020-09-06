@@ -1,25 +1,26 @@
-<p id="notice"><%= notice %></p>
+<ul class="text-center">
+  <% @users.each do |user| %>
+    <li class= "users-list">
+    <div>
+      <p> <%=gravatar_for(user) %></p>
+      <p><%= link_to user.name, user %> <%=link_to user.lastname, user%></p>
+      <% if its_me?(user) %>
+        <%= button_to 'Go to My Profile ', user, method: :get %>
+      <% elsif pending_for_accept_my_request(user) %>
+        <%= button_to 'Cancel Request Sent', friendship_path(finding_friendship_id(user)), method: :delete %>
+      <% elsif pending_for_me_to_accept(user) %>
+        <div>
+          <%= button_to 'Accept Request',edit_friendship_path(finding_friendship_id(user)), method: :get %>
+          <%= button_to 'Cancel Request',friendship_path(finding_friendship_id(user)), method: :delete %>
+        </div>
+      <% elsif we_are_friends(user)  %>
+        <%= button_to 'Go to My Friend\'s Profile ', user, method: :get %>
+        <%= button_to 'Remove',friendship_path(finding_friendship_id(user)), method: :delete %>
+      <% elsif %>
+        <%= button_to 'Add Friend', "#{authenticated_root_path}friendship/create/#{user.id}", method: :post %>
+      <% end %>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+      </li>
+    </div>
+  <% end %>
+</ul>

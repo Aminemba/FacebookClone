@@ -1,4 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class= "container-fluid">
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class= "row">
+
+    <div class= "col-md-4 col-sm-12 user-info text-center">
+      <%= gravatar_for(@user)%>
+      <p> <%= @user.name %> <%= @user.lastname %> </p>
+      <p><%= @user.email %> </p>
+    </div>
+
+    <div class="col-md-8 post-info text-center">
+
+    <%= render 'shared/newpost' %>
+
+
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ul class="posts">
+        <%= render @posts %>
+      </ul>
+      <%= will_paginate @posts %>
+
+    </div>
+  </div>
+</div>

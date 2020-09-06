@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_scope :user do
     authenticated :user do
       root to: 'posts#index', as: :authenticated_root
@@ -22,3 +23,6 @@ Rails.application.routes.draw do
       resources :likes, module: :comments
     end
   end
+
+
+end

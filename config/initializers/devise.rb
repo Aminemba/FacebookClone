@@ -1,20 +1,15 @@
 # frozen_string_literal: true
 
-# Assuming you have not yet modified this file, each configuration option below
-# is set to its default value. Note that some are commented out while others
-# are not: uncommented lines are intended to protect your configuration from
-# breaking changes in upgrades (i.e., in the event that future versions of
-# Devise change the default values for those options).
-#
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.omniauth :facebook, '190046578908599','be25c81a4340054dac94253182517252', token_params: { parse: :json }
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5a198f409ca6e34d2b145f90e0edda3e6e523c6051c1fc9c49ec3334a7601360811fa0e852c88bfa2b0880fb35d48a8c15c04cfd59c59ba65df68675a7569b32'
+  # config.secret_key = '8a2e62b50d9334798e1797bfacb994c42fc616a48cf9687c19ef57c2c4e487727c3db9822781acb78671cdee9295459d8934b608bf86dcdde9bdaf3bbb7b83d9'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -74,10 +69,7 @@ Devise.setup do |config|
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
-  # enable it only for database authentication.
-  # For API-only applications to support authentication "out-of-the-box", you will likely want to
-  # enable this with :database unless you are using a custom strategy.
-  # The supported strategies are:
+  # enable it only for database authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
@@ -112,21 +104,18 @@ Devise.setup do |config|
   # config.reload_routes = true
 
   # ==> Configuration for :database_authenticatable
-  # For bcrypt, this is the cost for hashing the password and defaults to 12. If
+  # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
-  # The number of stretches used for generating the hashed password are stored
-  # with the hashed password. This allows you to change the stretches without
-  # invalidating existing passwords.
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 12
+  config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '445d79ea9a0cbfc6353a59e318bed8df10b9d90088790d4af358f8593f8845da6029acbb6fa2a624d2a616287686747a22261f2280a0d4f912b243446280a9e7'
+  # config.pepper = '4b57715f9478d08dec2c939cee87ba488592c949d73ca4b843d15c14c10e19bff22346495d22340aee34c1df1bacbdaa2c6fd4dd726d090c9e1f515c730eb366'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
